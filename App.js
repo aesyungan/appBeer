@@ -15,11 +15,11 @@ import {
 import { StackNavigator } from 'react-navigation';
 import HomeScreen from './Components/Home/HomeScreen';
 import SeachTabNavigator from './Components/Search/SeachTabNavigator';
-type Props = {};
-export default class App extends Component<Props> {
+
+export default class App extends Component {
   render() {
     return (
-      <RootStack/>
+      <RootStack />
     );
   }
 }
@@ -30,9 +30,12 @@ const RootStack = StackNavigator(
     },
     SeachTabNavigator: {
       screen: SeachTabNavigator,
+      navigationOptions: {
+        header: null
+      }
     }
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'SeachTabNavigator',
   }
 );

@@ -5,31 +5,24 @@ import {
   Text,
   View
 } from 'react-native';
-/*
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});*/
+import { TabNavigator,TabBarBottom } from 'react-navigation';
+import SearchTab from './tabNavigator/SearchTab';
+import favouritesTab from './tabNavigator/favouritesTab';
+const SeachTabNavigator = TabNavigator({
+  SeachTab: { screen: SearchTab},
+  favouritesTab: { screen: favouritesTab },
 
-type Props = {};
-export default class SeachTabNavigator extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Seaching</Text>
-      </View>
-    );
-  }
-}
+}, {
+    tabBarOptions: {
+      activeTintColor: '#4a8bfc',
+      inactiveTintColor: 'gray',
+      //showLabel: false,
+      showIcon: true,
+    },
+    tabBarComponent: TabBarBottom,
+    tabBarPosition: 'bottom',
+    animationEnabled: true,
+    swipeEnabled: true,
+  });
+export default SeachTabNavigator;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
- 
-});
