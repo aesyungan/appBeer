@@ -48,7 +48,7 @@ export default class SearchTab extends Component {
     //no hay datos
 
     //show spinner
-    this.setState({ searching: true ,nodataFind:false});
+    this.setState({ searching: true ,nodataFind:false,beerFount:false});
     Keyboard.dismiss();
     // alert('Search for beer' + this.state.searchBeer);
     const beerName = this.state.searchBeer.toLowerCase();//convierte a minusculas

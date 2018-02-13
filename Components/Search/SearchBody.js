@@ -33,10 +33,10 @@ export default class SearchBody extends Component {
             //si no esta en la base inserta
             if (snapshot.val() == null) {
                 databaseRef.set({
-                    'name': data.name,
-                    'category': data.style.category.name,
-                    'description': data.description,
-                    'abv': data.abv,
+                    'name': data.name?data.name:'',
+                    'category':data.style.category? data.style.category.name:'',
+                    'description': data.description? data.description:'',
+                    'abv': data.abv?data.abv:'',
                     'isOrganic': data.isOrganic == 'Y' ? 'Yes' : 'No',
                     'available': data.available ? data.available.description : ' No info',
                     'img': data.labels ? data.labels.large : '',
