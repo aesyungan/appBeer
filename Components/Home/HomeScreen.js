@@ -6,8 +6,7 @@ import {
   View,
   Image
 } from 'react-native';
-import { Button, Container, Content, Right, Left, Header, Spinner } from 'native-base'
-
+import { Button, Container, Content, Right, Left, Header, Spinner } from 'native-base';
 /*
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -16,20 +15,18 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });*/
 var fondo = require('../../Assets/fondo.jpg');
-type Props = {};
-export default class HomeScreen extends Component<Props> {
+
+export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
 
     this.state = { cargado: false }
   }
-
   static navigationOptions = {
     header: null
   }
-
+  
   render() {
-
     return (
       <View style={styles.container}>
         <View style={{ position: 'absolute', width: '100%', height: '100%' }}>

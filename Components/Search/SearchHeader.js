@@ -16,15 +16,22 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });*/
 
-type Props = {};
-export default class SearchHeader extends Component<Props> {
+export default class SearchHeader extends Component {
+  state = {
+    value: ''
+  }
+  componentWillReceiveProps(nextProps) {
+    //console.warn(nextProps);
+    this.setState({ value: nextProps.value != this.value ? nextProps.value : this.value });
 
+  }
   render() {
     return (
       <Header searchBar rounded>
         <Item >
           <Icon name='ios-search' />
           <Input
+            value={this.state.value}
             onSubmitEditing={this.props.beerSearch}
             returnKeyType='search'
             onChangeText={this.props.onChangeText}
