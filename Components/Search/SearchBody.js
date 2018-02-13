@@ -25,21 +25,30 @@ export default class SearchBody extends Component {
             console.warn(props);
         }*/
     addToFavourites = (data) => {
-         //get current user 
-        var currentUser =  firebase.auth().currentUser;
-         //get a unique key 
-         var databaseRef =  firebase.database().ref(currentUser.uid).child('favourites').push();
-         //update the beername at the unique key
-         databaseRef.set({
-             'name': data.name,
-             'category': data.style.category.name,
-             'description': data.description,
-             'abv': data.abv,
-             'isOrganic': data.isOrganic == 'Y' ? 'Yes' : 'No',
-             'available': data.available ? data.available.description : ' No info',
-             'img': data.labels ? data.labels.large : '',
-         })
-       // console.warn("add:" + name);
+        //get current user 
+        var currentUser = firebase.auth().currentUser;
+        //get a unique key 
+        var databaseRef = firebase.database().ref(currentUser.uid).child('favourites').push();
+        var dataBase = firebase.database().ref(currentUser.uid).child('favourites').orderByChild('name').equalTo(data.name).on("value", function (snapshot) {
+            //si no esta en la base inserta
+            if (snapshot.val() == null) {
+                databaseRef.set({
+                    'name': data.name,
+                    'category': data.style.category.name,
+                    'description': data.description,
+                    'abv': data.abv,
+                    'isOrganic': data.isOrganic == 'Y' ? 'Yes' : 'No',
+                    'available': data.available ? data.available.description : ' No info',
+                    'img': data.labels ? data.labels.large : '',
+                });
+            }
+
+
+            /*snapshot.forEach(function (data) {
+                console.log(data.key);
+            });*/
+        });
+
 
     }
     render() {

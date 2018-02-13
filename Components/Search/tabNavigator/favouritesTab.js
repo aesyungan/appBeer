@@ -14,7 +14,7 @@ const instructions = Platform.select({
   android: 'Double tap R on your keyboard to reload,\n' +
     'Shake or press menu button for dev menu',
 });*/
-import { Icon, Container,Thumbnail, Header, Body, Right, Left, Content, ListItem } from 'native-base';
+import { Icon, Container, Thumbnail, Header, Body, Right, Left, Content, ListItem } from 'native-base';
 import * as firebase from 'firebase'
 
 var data = []
@@ -62,7 +62,7 @@ export default class favouritesTab extends Component {
         //console.warn(this.state.listViewData);
 
         return (
-            <Container style={{ flex: 1, backgroundColor: 'white'}}>
+            <Container style={{ flex: 1, backgroundColor: 'white' }}>
                 <Header>
                     <Left>
                         <Icon name="ios-star-half" />
@@ -83,12 +83,16 @@ export default class favouritesTab extends Component {
                         renderRow={data =>
 
                             <ListItem  onPress={() => this.props.navigation.navigate('SeachTabNavigator', { beerName: data.val().name })}>
+
                                 <Right>
-                                <Thumbnail style={{ marginHorizontal: 20, borderColor: 'pink', borderWidth: 2 }} source={data.val().img==''? require('../../../Assets/cerveza1.jpg'):{uri:data.val().img}}/>
+                                    <Thumbnail style={{ marginHorizontal: 15, borderColor: 'pink', borderWidth: 2 }} source={data.val().img == '' ? require('../../../Assets/cerveza1.jpg') : { uri: data.val().img }} />
                                 </Right>
                                 <Body>
                                     <Text> {data.val().name}</Text>
                                 </Body>
+                                <Right>
+                                    <Text note>3:43 pm</Text>
+                                </Right>
                             </ListItem>
                         }
                     />
